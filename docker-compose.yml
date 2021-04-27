@@ -1,0 +1,45 @@
+version: "3.6"
+services:
+  front:
+    container_name: front
+    build:
+      context: ./front
+    ports:
+      - 5000:80
+  back:
+    container_name: back
+    build:
+      context: ./back
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      TYPEORM_CONNECTION: ${TYPEORM_CONNECTION}
+      TYPEORM_HOST: ${TYPEORM_HOST}
+      TYPEORM_USERNAME: ${TYPEORM_USERNAME}
+      TYPEORM_PASSWORD: ${TYPEORM_PASSWORD}
+      TYPEORM_DATABASE: ${TYPEORM_DATABASE}
+      TYPEORM_PORT: ${TYPEORM_PORT}
+      TYPEORM_SYNCHRONIZE: ${TYPEORM_SYNCHRONIZE}
+      TYPEORM_LOGGING: ${TYPEORM_LOGGING}
+      TYPEORM_ENTITIES: ${TYPEORM_ENTITIES}
+      JWT_TTL: ${JWT_TTL}
+      JWT_SECRET: ${JWT_SECRET}
+      PORT: ${PORT}
+    ports:
+      - 3000:3000
+  reverse-proxy:
+    image: valian/docker-nginx-auto-ssl:1.0.0
+    container_name: reverse-proxy
+    restart: on-failure
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./.ssl-data:/etc/resty-auto-ssl
+    environment:
+      SITES: "novainvest.com.br=front:80;app.novainvest.com.br=back:3000"
+      FORCE_HTTPS: "true"
+    depends_on:
+      - front
+      - back
+volumes:
+  .ssl-data:

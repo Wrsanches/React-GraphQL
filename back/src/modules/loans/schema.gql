@@ -1,0 +1,20 @@
+scalar GraphQLDateTime
+
+type Query {
+  getLoans(userId: Int!): [Loans]!
+}
+
+type Loans {
+  id: ID!
+  vehicle: String
+  image: String!
+  year: String!
+  miles: String!
+  lender: String!
+  apr: String!
+  loanBalance: Int!
+  monthlyPayment: String!
+  timeRemaining: String!
+  createdAt: GraphQLDateTime!
+  updatedAt: GraphQLDateTime!
+}

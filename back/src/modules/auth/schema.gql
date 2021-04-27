@@ -1,0 +1,32 @@
+scalar GraphQLDateTime
+
+type Query {
+  validateToken: Boolean!
+  login(username: String!, password: String!): User!
+}
+
+type Mutation {
+  createUser(
+    firstName: String!
+    lastName: String!
+    username: String!
+    email: String!
+    password: String!
+  ): String!
+}
+
+type User {
+  user: UserData
+  token: String!
+}
+
+type UserData {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  username: String!
+  email: String!
+  password: String!
+  createdAt: GraphQLDateTime!
+  updatedAt: GraphQLDateTime!
+}

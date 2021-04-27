@@ -1,0 +1,5 @@
+scalar GraphQLDateTime
+
+type Mutation {
+  addResult(offerId: Int!, loanId: Int!, userId: Int!): String!
+}

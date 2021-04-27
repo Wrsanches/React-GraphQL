@@ -1,0 +1,15 @@
+scalar GraphQLDateTime
+
+type Query {
+  getOffers(loanId: Int!): [Offer]!
+}
+
+type Offer {
+  id: ID!
+  apr: String
+  monthlyPayment: String!
+  timeRemaining: String!
+  lowerPayment: String!
+  createdAt: GraphQLDateTime!
+  updatedAt: GraphQLDateTime!
+}
