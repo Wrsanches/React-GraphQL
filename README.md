@@ -14,12 +14,6 @@ In addition to the dependencies listed above, the project uses a few other repos
 - [Redux Saga](https://www.npmjs.com/package/redux-saga) - An intuitive Redux side effect manager.
 - [Redux Persist](https://www.npmjs.com/package/redux-persist) - Persist and rehydrate a redux store.
 
-### Demo
-
-- Site: [https://novainvest.com.br](https://novainvest.com.br)\
-  `Username: demo`\
-  `Password: demo`
-
 # Back
 
 The project was built using [Node.js](https://nodejs.org/en) v12.18.1 LTS, [Typescript](https://www.typescriptlang.org) v3.9.7 and [GraphQL](https://graphql.org/).
